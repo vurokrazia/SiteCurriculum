@@ -1,0 +1,30 @@
+%nav.navbar.navbar-expand-md.bg-secondary.navbar-dark
+  .container
+    = link_to "SiteCurriculum", root_path, class:"navbar-brand"
+    %button.navbar-toggler.navbar-toggler-right{"data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.mr-auto
+        %li.nav-item
+          = link_to "Inicio", root_path, class:"nav-link"
+        %li.nav-item
+          %a.nav-link{:href => "#ts"} Habilidades
+        %li.nav-item
+          %a.nav-link{:href => "#pe"} Portafolio
+        %li.nav-item
+          %a.nav-link{:href => "#we"} Experiencia
+        %li.nav-item.dropdown
+          %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"} Categorias 
+          .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
+            %a.dropdown-item{:href => "#"} Categoria # n
+            %a.dropdown-item{:href => "#"} Categoria # n
+            %a.dropdown-item{:href => "#"} Categoria # n
+        - if user_signed_in?
+          = link_to "Logout", destroy_user_session_path, class:"nav-link", :method => :delete 
+        - else
+          %li.nav-item
+            = link_to new_user_session_path, class:"nav-link" do
+              %i.fa.fa-user.fa-fw
+      %form.form-inline.m-0
+        %input.form-control.mr-2{:placeholder => "Search", :type => "text"}/
+        %button.btn.btn-primary{:type => "submit"} Search

@@ -1,0 +1,26 @@
+.container
+  .row
+    .col-12
+      .card
+        .card-body
+          %h1.text-center.my-5 Iniciar Sesión
+          = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+            .row.form-group.my-4
+              .col-md-3
+                = f.label :email
+              .col-md-9
+                = f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control"
+            .row.form-group.my-4
+              .col-md-3
+                = f.label :password
+              .col-md-9
+                = f.password_field :password, autocomplete: "off",class:"form-control"
+            .row.form-group.my-4
+              - if devise_mapping.rememberable?
+                .offset-md-3.col-md-8
+                  = f.check_box :remember_me
+                  = f.label :remember_me
+            .row
+              .col-md-4
+                = f.submit "Log in",class:"btn btn-primary btn-block"
+              = render "devise/shared/links"
