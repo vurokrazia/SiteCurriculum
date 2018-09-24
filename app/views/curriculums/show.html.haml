@@ -1,0 +1,28 @@
+.col-12
+  .card
+    .card-body
+      %h1
+        = @curriculum.experience
+      %p
+        = @curriculum.description_experience.html_safe
+      %p
+        =link_to "Sitio",@curriculum.link,class:"btn btn-info"
+      %p
+        %b Start date:
+        = @curriculum.start_date
+      %p
+        %b Finish date:
+        = @curriculum.finish_date
+      %p
+        %b Position:
+        = @curriculum.position
+      %p
+        %b Type exp:
+        = @curriculum.type_exp
+      %p
+        %b correo:
+        = @curriculum.user.email
+
+      = link_to 'Edit', edit_curriculum_path(@curriculum)
+      \|
+      = link_to 'Back', curriculums_path

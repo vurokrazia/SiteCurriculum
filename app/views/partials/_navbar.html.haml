@@ -21,6 +21,10 @@
             %a.dropdown-item{:href => "#"} Categoria # n
         - if user_signed_in?
           = link_to "Logout", destroy_user_session_path, class:"nav-link", :method => :delete 
+          %li.nav-item.dropdown
+            %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"} Categorias 
+            .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
+              = link_to 'Curriculum', curriculums_path,class:"dropdown-item"
         - else
           %li.nav-item
             = link_to new_user_session_path, class:"nav-link" do

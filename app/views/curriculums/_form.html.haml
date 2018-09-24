@@ -1,0 +1,44 @@
+.col-12
+  .card
+    .card-body
+      %h1= title ||= "curriculum"  
+      = form_for @curriculum, remote:false do |f|
+        - if @curriculum.errors.any?
+          .row
+            .col-12
+              #error_explanation
+                %h2= "#{pluralize(@curriculum.errors.count, "error")} prohibited this curriculum from being saved:"
+                %ul
+                  - @curriculum.errors.full_messages.each do |message|
+                    %li= message
+
+        .form-group.row
+          = f.label :experience,class:"col-sm-3 col-form-label"
+          .col-sm-9
+            = f.text_field :experience,class:"form-control"
+        .form-group.row
+          = f.label :description_experience,class:"col-sm-3 col-form-label"
+          .col-sm-9
+            = f.trix_editor :description_experience,class:"form-control"
+        .form-group.row
+          = f.label :link,class:"col-sm-3 col-form-label"
+          .col-sm-9
+            = f.text_field :link,class:"form-control"
+        .form-group.row
+          = f.label :start_date,class:"col-sm-3 col-form-label"
+          .col-sm-9
+            = f.text_field :start_date,class:"form-control"
+        .form-group.row
+          = f.label :finish_date,class:"col-sm-3 col-form-label"
+          .col-sm-9
+            = f.text_field :finish_date,class:"form-control"
+        .form-group.row
+          = f.label :position,class:"col-sm-3 col-form-label"
+          .col-sm-9
+            = f.number_field :position,class:"form-control",min:0
+        .form-group.row
+          = f.label :type_exp,class:"col-sm-3 col-form-label"
+          .col-sm-9
+            = f.text_field :type_exp,class:"form-control"
+        .actions
+          = f.submit 'Save'

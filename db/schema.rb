@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180512024157) do
+ActiveRecord::Schema.define(version: 20180730004548) do
+
+  create_table "curriculums", force: :cascade do |t|
+    t.string "experience"
+    t.string "description_experience"
+    t.string "link"
+    t.string "start_date"
+    t.string "finish_date"
+    t.string "position"
+    t.string "type_exp"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_curriculums_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
