@@ -24,14 +24,15 @@
           = f.label :link,class:"col-sm-3 col-form-label"
           .col-sm-9
             = f.text_field :link,class:"form-control"
-        .form-group.row
-          = f.label :start_date,class:"col-sm-3 col-form-label"
-          .col-sm-9
-            = f.text_field :start_date,class:"form-control"
-        .form-group.row
-          = f.label :finish_date,class:"col-sm-3 col-form-label"
-          .col-sm-9
-            = f.text_field :finish_date,class:"form-control"
+        - if params[:action] == "new"
+          .form-group.row
+            = f.label :start_date,class:"col-sm-3 col-form-label"
+            .col-sm-9
+              = f.date_field :start_date,class:"form-control"
+          .form-group.row
+            = f.label :finish_date,class:"col-sm-3 col-form-label"
+            .col-sm-9
+              = f.date_field :finish_date,class:"form-control"
         .form-group.row
           = f.label :position,class:"col-sm-3 col-form-label"
           .col-sm-9
@@ -39,6 +40,6 @@
         .form-group.row
           = f.label :type_exp,class:"col-sm-3 col-form-label"
           .col-sm-9
-            = f.text_field :type_exp,class:"form-control"
+            = select("curriculum","type_exp",[["Experiencia de trabajo","0"],["Experiencia de proyecto","1"]],{include_blank: false,:prompt => "Selecciona"},{class:"form-control"})
         .actions
-          = f.submit 'Save'
+          = f.submit 'Save' 

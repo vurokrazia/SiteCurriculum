@@ -8,13 +8,11 @@
         %thead
           %tr
             %th Experience
-            %th Description experience
             %th Link
             %th Start date
             %th Finish date
             %th Position
             %th Type exp
-            %th User
             %th
             %th
             %th
@@ -23,17 +21,16 @@
           - @curriculums.each do |curriculum|
             %tr
               %td= curriculum.experience
-              %td= curriculum.description_experience
               %td= curriculum.link
               %td= curriculum.start_date
               %td= curriculum.finish_date
               %td= curriculum.position
-              %td= curriculum.type_exp
-              %td= curriculum.user
-              %td= link_to 'Show', curriculum
-              %td= link_to 'Edit', edit_curriculum_path(curriculum)
-              %td= link_to 'Destroy', curriculum, method: :delete, data: { confirm: 'Are you sure?' }
-
-      %br
-
-      = link_to 'New Curriculum', new_curriculum_path
+              %td= curriculum.type_experience
+              - if can? :read, curriculum
+                %td= link_to 'Show', curriculum,class:"btn btn-success"
+              - if can? :update, curriculum
+                %td= link_to 'Edit', edit_curriculum_path(curriculum),class:"btn btn-warning"
+              - if can? :destroy, curriculum
+                %td= link_to 'Destroy', curriculum,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
+      - if can? :new, Curriculum
+        = link_to 'New Curriculum', new_curriculum_path,class:"btn btn-info"

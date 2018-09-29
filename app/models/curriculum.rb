@@ -23,4 +23,14 @@ class Curriculum < ApplicationRecord
   validates :start_date, presence:true
   validates :finish_date, presence:true
   validates :type_exp, presence:true
+  def type_experience
+  	#this -- self - Este objeto
+  	if self.type_exp == "0"
+  		"Experiencia de trabajo"
+  	elsif self.type_exp == "1"
+  		"Experiencia de proyecto"
+  	else
+  		"None"
+  	end
+  end
 end

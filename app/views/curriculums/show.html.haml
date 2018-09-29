@@ -8,21 +8,20 @@
       %p
         =link_to "Sitio",@curriculum.link,class:"btn btn-info"
       %p
-        %b Start date:
+        %b Fecha de inicio:
         = @curriculum.start_date
       %p
-        %b Finish date:
+        %b Fecha de termino:
         = @curriculum.finish_date
       %p
-        %b Position:
-        = @curriculum.position
-      %p
-        %b Type exp:
-        = @curriculum.type_exp
+        %b Tipo de experiencia:
+        = @curriculum.type_experience
       %p
         %b correo:
         = @curriculum.user.email
-
-      = link_to 'Edit', edit_curriculum_path(@curriculum)
-      \|
-      = link_to 'Back', curriculums_path
+      .row
+        - if can? :update, @curriculum
+          .col-md-4.offset-md-2
+            = link_to 'Edit', edit_curriculum_path(@curriculum),class:"btn btn-info btn-block"
+        .col-md-4
+          = link_to 'Back', curriculums_path,class:"btn btn-info btn-block"
