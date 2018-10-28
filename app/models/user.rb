@@ -24,6 +24,7 @@
 #  linkedin               :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  permission_level       :integer          default(0)
 #
 
 class User < ApplicationRecord
@@ -32,4 +33,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :curriculums
+  has_many :tools
 end

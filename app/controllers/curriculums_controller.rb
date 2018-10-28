@@ -1,6 +1,5 @@
 class CurriculumsController < ApplicationController
   #before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
-  before_action :set_types, only: [:show, :new, :index]
   load_and_authorize_resource
   # GET /curriculums
   # GET /curriculums.json
@@ -8,6 +7,13 @@ class CurriculumsController < ApplicationController
     @curriculums = Curriculum.all
   end
 
+  def tools
+    @hastools = HasTool.new
+  end
+  def newtools
+    HasTool.create(tool_id:params[:hastools][:tool_id],curriculum_id:params[:id])
+    redirect_to Curriculum.find(params[:id])
+  end
   # GET /curriculums/1
   # GET /curriculums/1.json
   def show
@@ -63,19 +69,12 @@ class CurriculumsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_types
-      @types = [
-      ["Experiencia de trabajo","0"],
-      ["Experiencia de proyecto","1"]
-    ]
-    end
     def set_curriculum
       @curriculum = Curriculum.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def curriculum_params
-      params.require(:curriculum).permit(:experience, :description_experience, :link, :start_date, :finish_date, :position, :type_exp)
+      params.require(:curriculum).permit(:title, :description_experience, :link, :start_date, :finish_date, :position, :experience_id)
     end
 end

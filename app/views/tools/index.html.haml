@@ -1,0 +1,29 @@
+%h1 Listing tools
+
+%table.table.table-responsive
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th User
+      %th Myskill
+      %th
+      %th
+      %th
+
+  %tbody
+    - @tools.each do |tool|
+      %tr
+        %td= tool.name
+        %td= tool.description
+        %td= tool.user.email
+        %td
+          -if !tool.myskill.nil?
+            =tool.myskill.title
+        %td= link_to 'Show', tool
+        %td= link_to 'Edit', edit_tool_path(tool)
+        %td= link_to 'Destroy', tool, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Tool', new_tool_path

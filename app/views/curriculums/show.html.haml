@@ -2,7 +2,7 @@
   .card
     .card-body
       %h1
-        = @curriculum.experience
+        = @curriculum.title
       %p
         = @curriculum.description_experience.html_safe
       %p
@@ -15,13 +15,26 @@
         = @curriculum.finish_date
       %p
         %b Tipo de experiencia:
-        = @curriculum.type_experience
+        = @curriculum.experience.title
       %p
         %b correo:
         = @curriculum.user.email
       .row
+        - @title = ""
+        - if !@curriculum.tools.lenguaje.empty?
+          .col-md-4
+            =render @curriculum.tools.lenguaje
+        - if !@curriculum.tools.frameworks.empty?
+          .col-md-4
+            =render @curriculum.tools.frameworks
+        - if !@curriculum.tools.others.empty?
+          .col-md-4
+            =render @curriculum.tools.others
+      .row
         - if can? :update, @curriculum
-          .col-md-4.offset-md-2
+          .col-md-3.offset-md-1
+            = link_to "Add tool", "/curriculums/#{@curriculum.id}/tools",class:"btn btn-info btn-block"
+          .col-md-3
             = link_to 'Edit', edit_curriculum_path(@curriculum),class:"btn btn-info btn-block"
-        .col-md-4
+        .col-md-3
           = link_to 'Back', curriculums_path,class:"btn btn-info btn-block"

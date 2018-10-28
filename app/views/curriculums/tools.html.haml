@@ -1,0 +1,3 @@
+=form_tag "/curriculums/#{params[:id]}/tools", :method => :post do
+  =select("hastools", "tool_id", Tool.all.collect {|p| [ p.name, p.id ] }, { include_blank: false })
+  =button_tag "Checkout", data: { disable_with: "Please wait..." }

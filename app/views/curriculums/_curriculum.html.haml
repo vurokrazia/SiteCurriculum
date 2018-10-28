@@ -1,0 +1,14 @@
+.col-sm-12.col-md-6.my-3
+  .card.h-100
+    .card-body
+      %h3{:style => "min-height:100px;"}= link_to truncate(curriculum.title, length:100), curriculum
+      %div{:style => "min-height:200px;"}
+        = truncate_html(curriculum.description_experience.html_safe,length:400)
+      - if !curriculum.tools.lenguaje.empty?
+        %p="#{curriculum.tools.lenguaje.count} lenguaje(s) "
+      - if !curriculum.tools.frameworks.empty?
+        %p="#{curriculum.tools.frameworks.count} framework(s) "
+      - if !curriculum.tools.others.empty?
+        %p="#{curriculum.tools.others.count} other "
+      .text-right.my-2
+        =link_to "Visitar sitio", curriculum.link,class:"btn btn-info btn-curriculumns"

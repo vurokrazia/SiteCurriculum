@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @tool.name
+%p
+  %b Description:
+  = @tool.description
+%p
+  %b Img:
+  = @tool.img
+%p
+  %b User:
+  = @tool.user
+%p
+  %b Myskill:
+  = @tool.myskill
+
+= link_to 'Edit', edit_tool_path(@tool)
+\|
+= link_to 'Back', tools_path

@@ -1,0 +1,7 @@
+.col-sm-12.col-md-4.my-3
+  .card.h-100
+    .card-body
+      %h3=myskill.title
+      %ul
+        -Tool.where(myskill_id:myskill.id).each do |tool|
+          %li=tool.name

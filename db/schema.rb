@@ -10,20 +10,66 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180929202443) do
+ActiveRecord::Schema.define(version: 20181021171639) do
 
   create_table "curriculums", force: :cascade do |t|
-    t.string "experience"
+    t.string "title"
     t.string "description_experience"
     t.string "link"
     t.string "start_date"
     t.string "finish_date"
     t.string "position"
-    t.string "type_exp"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "experience_id"
+    t.index ["experience_id"], name: "index_curriculums_on_experience_id"
     t.index ["user_id"], name: "index_curriculums_on_user_id"
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "has_experiences", force: :cascade do |t|
+    t.integer "experience_id"
+    t.integer "curriculum_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["curriculum_id"], name: "index_has_experiences_on_curriculum_id"
+    t.index ["experience_id"], name: "index_has_experiences_on_experience_id"
+  end
+
+  create_table "has_tools", force: :cascade do |t|
+    t.integer "curriculum_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "tool_id"
+    t.index ["curriculum_id"], name: "index_has_tools_on_curriculum_id"
+    t.index ["tool_id"], name: "index_has_tools_on_tool_id"
+  end
+
+  create_table "myskills", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tools", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "img_file_name"
+    t.string "img_content_type"
+    t.integer "img_file_size"
+    t.datetime "img_updated_at"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "myskill_id"
+    t.index ["myskill_id"], name: "index_tools_on_myskill_id"
+    t.index ["user_id"], name: "index_tools_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

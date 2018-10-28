@@ -1,0 +1,20 @@
+= form_for @tool do |f|
+  - if @tool.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@tool.errors.count, "error")} prohibited this tool from being saved:"
+      %ul
+        - @tool.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :img
+    = f.file_field :img
+  =select("tool", "myskill_id", Myskill.all.collect {|p| [ p.title, (p.id).to_i ] }, { include_blank: false })
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,13 @@
+= form_for @myskill do |f|
+  - if @myskill.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@myskill.errors.count, "error")} prohibited this myskill from being saved:"
+      %ul
+        - @myskill.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .actions
+    = f.submit 'Save'

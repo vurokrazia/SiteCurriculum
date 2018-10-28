@@ -16,16 +16,18 @@
             %th
             %th
             %th
+            %th
 
         %tbody
           - @curriculums.each do |curriculum|
             %tr
-              %td= curriculum.experience
-              %td= curriculum.link
+              %td= curriculum.title
+              %td= link_to "visitar",curriculum.link
               %td= curriculum.start_date
               %td= curriculum.finish_date
               %td= curriculum.position
-              %td= curriculum.type_experience
+              %td= curriculum.experience.title
+              %td= link_to "Add tool", "/curriculums/#{curriculum.id}/tools"
               - if can? :read, curriculum
                 %td= link_to 'Show', curriculum,class:"btn btn-success"
               - if can? :update, curriculum

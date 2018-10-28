@@ -1,0 +1,21 @@
+%h1 Listing myskills
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th
+      %th
+      %th
+
+  %tbody
+    - @myskills.each do |myskill|
+      %tr
+        %td= myskill.title
+        %td= link_to 'Show', myskill
+        %td= link_to 'Edit', edit_myskill_path(myskill)
+        %td= link_to 'Destroy', myskill, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Myskill', new_myskill_path

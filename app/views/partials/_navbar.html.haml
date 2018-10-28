@@ -7,12 +7,20 @@
       %ul.navbar-nav.mr-auto
         %li.nav-item
           = link_to "Inicio", root_path, class:"nav-link"
-        %li.nav-item
-          %a.nav-link{:href => "#ts"} Habilidades
-        %li.nav-item
-          %a.nav-link{:href => "#pe"} Portafolio
-        %li.nav-item
-          %a.nav-link{:href => "#we"} Experiencia
+          - if params[:controller] != "home"
+            %li.nav-item
+              =link_to "Portafolio", home_index_path,class:"nav-link"
+            %li.nav-item
+              =link_to "Experiencia", home_index_path,class:"nav-link"
+            %li.nav-item
+              =link_to "Habilidades", home_index_path,class:"nav-link"
+          -else
+            %li.nav-item
+              =link_to "Portafolio", "#PE" ,class:"nav-link"
+            %li.nav-item
+              =link_to "Experiencia", "#PW" ,class:"nav-link"
+            %li.nav-item
+              =link_to "Habilidades", "#TS" ,class:"nav-link"
         %li.nav-item.dropdown
           %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"} Categorias 
           .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
@@ -26,7 +34,9 @@
               %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"} Administrador 
               .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
                 = link_to 'Curriculum', curriculums_path,class:"dropdown-item"
-                = link_to 'Agregar trabajo', new_curriculum_path,class:"dropdown-item"
+                = link_to 'Experiencias', experiences_path,class:"dropdown-item"
+                = link_to 'Habilidades', myskills_path,class:"dropdown-item"
+                = link_to 'Herramientas', tools_path,class:"dropdown-item"
         - else
           %li.nav-item
             = link_to new_user_session_path, class:"nav-link" do
