@@ -3,34 +3,30 @@
     .card-body
 
       %h1 Listing curriculums
-
-      %table.table.table-responsive
-        %thead
-          %tr
-            %th Title
-            %th Link
-            %th Start date
-            %th Finish date
-            %th Position
-            %th Type exp
-            %th
-            %th
-            %th
-
-        %tbody
-          - @curriculums.each do |curriculum|
+      .table-responsive
+        %table.table
+          %thead
             %tr
-              %td= curriculum.title
-              %td= curriculum.link
-              %td= curriculum.start_date
-              %td= curriculum.finish_date
-              %td= curriculum.position
-              %td= curriculum.experience.nil? ? "Huerfano" : curriculum.experience.title
-              - if can? :read, curriculum
-                %td= link_to 'Show', curriculum,class:"btn btn-success"
-              - if can? :update, curriculum
-                %td= link_to 'Edit', edit_curriculum_path(curriculum),class:"btn btn-warning"
-              - if can? :destroy, curriculum
-                %td= link_to 'Destroy', curriculum,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
+              %th Title
+              %th Experience
+              %th 
+              %th
+              %th
+              %th
+
+          %tbody
+            - @curriculums.each do |curriculum|
+              %tr
+                %td= curriculum.title
+                %td= curriculum.experience.nil? ? "Huerfano" : curriculum.experience.title
+                %td
+                  %button#addTool.btn.btn-primary{"c_id"=> curriculum.id,"data-target" => "#hasTool", "data-toggle" => "modal", :type => "button", :onclick => "acciones.setCurriculum(this)"}Agregar tool
+                - if can? :read, curriculum
+                  %td= link_to 'Show', curriculum,class:"btn btn-success"
+                - if can? :update, curriculum
+                  %td= link_to 'Edit', edit_curriculum_path(curriculum),class:"btn btn-warning"
+                - if can? :destroy, curriculum
+                  %td= link_to 'Destroy', curriculum,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
       - if can? :new, Curriculum
+        = render 'hastool'
         = link_to 'New Curriculum', new_curriculum_path,class:"btn btn-info"

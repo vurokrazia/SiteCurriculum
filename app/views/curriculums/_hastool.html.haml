@@ -1,0 +1,15 @@
+#hasTool.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "modalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#modalLabel.modal-title Agregar Tool
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        %form
+          .form-group
+            = select("has_tool", "id", Tool.all.collect {|p| [ p.title, p.id ] }, { include_blank: false }, {class: "form-control "})
+
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+        %button#createTool.btn.btn-primary{"data-dismiss" => "modal", :type => "button"} Agregar

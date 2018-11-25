@@ -1,5 +1,5 @@
 .col-12
-  .card
+  .card.my-5
     .card-body
       %h1
         = @curriculum.title
@@ -25,3 +25,21 @@
             = link_to 'Edit', edit_curriculum_path(@curriculum),class:"btn btn-info btn-block"
         .col-md-4
           = link_to 'Back', curriculums_path,class:"btn btn-info btn-block"
+.col-12
+  =image_tag @curriculum.c_image.url(:big),class:""
+.col-12
+  =image_tag @curriculum.c_image.url(:original),class:""
+.col-12
+  =image_tag @curriculum.c_image.url(:medium),class:""
+.col-12
+  =image_tag @curriculum.c_image.url(:thumb),class:""
+
+- @curriculum.tools.each do |tool|
+  .col-12.col-sm-6.col-md-4.my-3
+    .card
+      %img.card-img-top{:alt => "#{tool.title}", :src => "#{tool.t_image.url(:thumb)}"}/
+      .card-body
+        %p.card-title=tool.title
+        %p.card-text= truncate(tool.description, length:200)
+        .text-right
+          = link_to 'Ver más', tool,class:"btn btn-primary"

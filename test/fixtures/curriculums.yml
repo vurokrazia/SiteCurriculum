@@ -13,6 +13,10 @@
 #  updated_at             :datetime         not null
 #  experience_id          :integer
 #  title                  :string
+#  c_image_file_name      :string
+#  c_image_content_type   :string
+#  c_image_file_size      :bigint(8)
+#  c_image_updated_at     :datetime
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

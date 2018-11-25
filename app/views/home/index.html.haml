@@ -7,7 +7,8 @@
       - exp.curriculums.limit(6).each do |curriculum|
         .col-12.col-md-6.col-lg-4
           = link_to curriculum, class:"offLink" do 
-            .card.bg-p-light
+            .card
+              %img.card-img-top{:alt => "#{curriculum.title}", :src => "#{curriculum.c_image.url(:big)}"}/
               .card-body
                 %h3.card-text= curriculum.title
                 %p.card-text= truncate(curriculum.description_experience.html_safe, length: 200)
