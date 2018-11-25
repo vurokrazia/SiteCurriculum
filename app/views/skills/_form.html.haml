@@ -1,0 +1,21 @@
+.col-12
+  .card
+    .card-body
+      %h1= title ||= "skills"  
+      = form_for @skill do |f|
+        - if @skill.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@skill.errors.count, "error")} prohibited this skill from being saved:"
+            %ul
+              - @skill.errors.full_messages.each do |message|
+                %li= message
+
+        .form-group.row
+          = f.label :Title,class:"col-sm-3 col-form-label"
+          .col-sm-9
+            = f.text_field :title,class:"form-control",placeholder:"Title"
+        .row
+          .col-12.col-md-4.offset-md-2
+            = f.submit 'Save',class:"btn btn-block btn-primary"
+          .col-12.col-md-4
+            = link_to 'back', skills_path ,class:"btn btn-block btn-secondary"

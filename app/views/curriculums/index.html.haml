@@ -7,7 +7,7 @@
       %table.table.table-responsive
         %thead
           %tr
-            %th Experience
+            %th Title
             %th Link
             %th Start date
             %th Finish date
@@ -20,12 +20,12 @@
         %tbody
           - @curriculums.each do |curriculum|
             %tr
-              %td= curriculum.experience
+              %td= curriculum.title
               %td= curriculum.link
               %td= curriculum.start_date
               %td= curriculum.finish_date
               %td= curriculum.position
-              %td= curriculum.type_experience
+              %td= curriculum.experience.nil? ? "Huerfano" : curriculum.experience.title
               - if can? :read, curriculum
                 %td= link_to 'Show', curriculum,class:"btn btn-success"
               - if can? :update, curriculum

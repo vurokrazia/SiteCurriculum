@@ -5,11 +5,11 @@ class Ability
     user ||= User.new
 
     if user.permission_level == 0
-        can [:read], Curriculum
+        can [:read], [Curriculum, Experience, Skill, Tool]
     elsif user.permission_level == 1
-        can [:read,:create,:new,:update,:edit], Curriculum
-    elsif user.permission_level == 2
-        can [:manage], Curriculum
+        can [:read,:create,:new,:update,:edit], [Curriculum, Experience, Skill, Tool]
+    elsif user.permission_level >= 2
+        can [:manage], [Curriculum, Experience, Skill, Tool]
     end
     # Define abilities for the passed in user here. For example:
     #

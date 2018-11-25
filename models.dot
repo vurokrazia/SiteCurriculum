@@ -1,0 +1,14 @@
+digraph models_diagram {
+	graph[overlap=false, splines=true, bgcolor="none"]
+	"Tool" [shape=Mrecord, label="{Tool|updated_at :datetime\ltitle :varchar\lt_image_file_name :varchar\lt_image_content_type :varchar\lt_image_file_size :bigint\lt_image_updated_at :datetime\ldescription :text\luser_id :integer\lskill_id :integer\lcreated_at :datetime\lid :INTEGER\l}"]
+	"Experience" [shape=Mrecord, label="{Experience|id :INTEGER\ltitle :varchar\luser_id :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Curriculum" [shape=Mrecord, label="{Curriculum|title :varchar\ldescription_experience :varchar\llink :varchar\lstart_date :varchar\lfinish_date :varchar\lposition :varchar\luser_id :integer\lcreated_at :datetime\lupdated_at :datetime\lexperience_id :integer\lid :INTEGER\l}"]
+	"ApplicationRecord" []
+	"Skill" [shape=Mrecord, label="{Skill|id :INTEGER\ltitle :varchar\luser_id :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"User" [shape=Mrecord, label="{User|permission_level :integer\lemail :varchar\lencrypted_password :varchar\lreset_password_token :varchar\lreset_password_sent_at :datetime\lremember_created_at :datetime\lsign_in_count :integer\lcurrent_sign_in_at :datetime\llast_sign_in_at :datetime\lcurrent_sign_in_ip :varchar\llast_sign_in_ip :varchar\lname :varchar\lage :integer\lcity :varchar\lnum :varchar\leducation :varchar\lyoutube :varchar\lfacebook :varchar\ltwitter :varchar\llinkedin :varchar\lcreated_at :datetime\lupdated_at :datetime\lid :INTEGER\l}"]
+	"Experience" -> "Curriculum" [arrowtail=odot, arrowhead=crow, dir=both color="#B6F09B"]
+	"User" -> "Curriculum" [arrowtail=odot, arrowhead=crow, dir=both color="#4435E6"]
+	"User" -> "Experience" [arrowtail=odot, arrowhead=crow, dir=both color="#1BD3B0"]
+	"User" -> "Skill" [arrowtail=odot, arrowhead=crow, dir=both color="#DEF4DC"]
+	"User" -> "Tool" [arrowtail=odot, arrowhead=crow, dir=both color="#1DBAA4"]
+}

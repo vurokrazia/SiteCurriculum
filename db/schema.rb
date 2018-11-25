@@ -10,20 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180929202443) do
+ActiveRecord::Schema.define(version: 20181125023451) do
 
   create_table "curriculums", force: :cascade do |t|
-    t.string "experience"
     t.string "description_experience"
     t.string "link"
     t.string "start_date"
     t.string "finish_date"
     t.string "position"
-    t.string "type_exp"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "experience_id"
+    t.string "title"
+    t.index ["experience_id"], name: "index_curriculums_on_experience_id"
     t.index ["user_id"], name: "index_curriculums_on_user_id"
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.string "title"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_experiences_on_user_id"
+  end
+
+  create_table "has_tools", force: :cascade do |t|
+    t.integer "curriculum_id"
+    t.integer "tool_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["curriculum_id"], name: "index_has_tools_on_curriculum_id"
+    t.index ["tool_id"], name: "index_has_tools_on_tool_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "title"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_skills_on_user_id"
+  end
+
+  create_table "tools", force: :cascade do |t|
+    t.string "title"
+    t.string "t_image_file_name"
+    t.string "t_image_content_type"
+    t.bigint "t_image_file_size"
+    t.datetime "t_image_updated_at"
+    t.text "description"
+    t.integer "user_id"
+    t.integer "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_tools_on_skill_id"
+    t.index ["user_id"], name: "index_tools_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

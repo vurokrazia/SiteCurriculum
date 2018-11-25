@@ -1,0 +1,9 @@
+.col-12
+  .card 
+    .card-body
+      %h1= @skill.title
+      %p= @skill.user.email
+      - if can? :update, @skill
+        = link_to 'Edit', edit_skill_path(@skill),class:"btn btn-primary"
+        \|
+        = link_to 'Back', skills_path,class:"btn btn-secondary"

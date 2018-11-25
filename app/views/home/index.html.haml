@@ -1,8 +1,13 @@
 .col-12
-  %h1.text-center Experiencia 
-- @curriculums.each do |cur|
-  .col-12
-    .card
-      .card-body
-        %h3= cur.experience
-        %p= cur.description_experience.html_safe
+  %h1.text-center Experiences 
+- @experiences.each do |exp|
+  .col-12.my-5
+    %h2.text-center= exp.title 
+    .row
+      - exp.curriculums.limit(6).each do |curriculum|
+        .col-12.col-md-6.col-lg-4
+          = link_to curriculum, class:"offLink" do 
+            .card.bg-p-light
+              .card-body
+                %h3.card-text= curriculum.title
+                %p.card-text= truncate(curriculum.description_experience.html_safe, length: 200)

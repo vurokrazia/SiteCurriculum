@@ -1,0 +1,20 @@
+.col-12
+  .card
+    .card-body
+      %h1.text-center.my-4= title ||= "Experiences"  
+      = form_for @experience do |f|
+        - if @experience.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@experience.errors.count, "error")} prohibited this experience from being saved:"
+            %ul
+              - @experience.errors.full_messages.each do |message|
+                %li= message
+        .form-group.row
+          = f.label :title, class:"col-sm-3 col-form-label"
+          .col-sm-9
+            = f.text_field :title ,class:"form-control",placeholder:"title"
+        .row
+          .col-12.col-md-4.offset-md-2
+            = f.submit 'Save',class:"btn btn-block btn-primary"
+          .col-12.col-md-4
+            = link_to 'back', experiences_path ,class:"btn btn-block btn-secondary"

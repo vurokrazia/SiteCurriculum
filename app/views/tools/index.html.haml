@@ -1,0 +1,32 @@
+.col-12
+  .card
+    .card-body
+      %h1 Listing tools
+      .table-responsive
+        %table.table
+          %thead
+            %tr
+              %th Title
+              %th T image
+              %th Description
+              %th User
+              %th Skill
+              %th
+              %th
+              %th
+
+          %tbody
+            - @tools.each do |tool|
+              %tr
+                %td= tool.title
+                %td= tool.t_image
+                %td= truncate(tool.description,length:50)
+                %td= tool.user
+                %td= tool.skill
+                %td= link_to 'Show', tool,class:"btn btn-primary"
+                %td= link_to 'Edit', edit_tool_path(tool),class:"btn btn-secondary"
+                %td= link_to 'Destroy', tool, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger"
+
+      %br
+
+      = link_to 'New Tool', new_tool_path,class:"btn btn-info"

@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @curriculums = Curriculum.all
+    @experiences = Experience.all
+
   end
 
   def history

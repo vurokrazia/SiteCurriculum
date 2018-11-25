@@ -14,12 +14,44 @@
  *= require trix
  *= require_self
  */
+
+ @import url('https://fonts.googleapis.com/css?family=Fredoka+One|Source+Serif+Pro');
+ @import "bootstrap/functions";
+ @import "bootstrap/variables";
+
+ $theme-colors: (
+   "primary"		: #673ab7,
+   "secondary"		:#81d4fa,
+   "info"			: #9a67ea,
+   "success"		:#4be4e4,
+   "warning"		:#320b86,
+   "danger"		 	: #4ba3c7,
+ );
+
+
 @import "bootstrap";
 @import "font-awesome";
-
+h1,h2{
+	font-family: 'Fredoka One', cursive;
+	color: #673ab7;
+}
+p{
+	font-family: 'Source Serif Pro', serif;
+}
+.btn{
+	color: #fff;
+}
 body{
 	background: #E6E6E6;
 }
 nav{
 	margin-bottom: 60px;
+}
+.offLink{
+	text-decoration: none !important;
+	color: black;
+}
+.offLink:hover{
+	text-decoration: none !important;
+	color: purple;
 }

@@ -1,0 +1,20 @@
+.col-12
+  .card
+    .card-body
+      %p
+        %b Title:
+        = @tool.title
+      = image_tag @tool.t_image.url(:big),class:"img-fluid"
+      %p
+        %b Description:
+        = @tool.description
+      %p
+        %b User:
+        = @tool.user.email
+      %p
+        %b Skill:
+        = @tool.skill.title
+
+      = link_to 'Edit', edit_tool_path(@tool),class:"btn btn-primary"
+      \|
+      = link_to 'Back', tools_path,class:"btn btn-secondary"

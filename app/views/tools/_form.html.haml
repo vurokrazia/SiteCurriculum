@@ -1,0 +1,33 @@
+.col-12
+  .card
+    .card-body
+      %h1= title ||= "skills"  
+      = form_for @tool do |f|
+        - if @tool.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@tool.errors.count, "error")} prohibited this tool from being saved:"
+            %ul
+              - @tool.errors.full_messages.each do |message|
+                %li= message
+
+        .form-group.row
+          = f.label :Title,class:"col-sm-3 col-form-label"
+          .col-sm-9
+            = f.text_field :title,class:"form-control", placeholder:"Title"
+        .form-group.row
+          = f.label :t_image, class:"col-sm-3 col-form-label"
+          .col-sm-9
+            = f.file_field :t_image,class:"form-control", placeholder:"t_image"
+        .form-group.row
+          = f.label :description, class:"col-sm-3 col-form-label"
+          .col-sm-9
+            = f.text_area :description,class:"form-control", placeholder:"description"
+        .form-group.row
+          = f.label :skill, class:"col-sm-3 col-form-label"
+          .col-sm-9
+            = f.select :skill_id, options_for_select(Skill.all.map{|e| [e.title, e.id]}), {}, {class: "form-control "} 
+        .row
+          .col-12.col-md-4.offset-md-2
+            = f.submit 'Save',class:"btn btn-block btn-primary"
+          .col-12.col-md-4
+            = link_to 'back', tools_path ,class:"btn btn-block btn-secondary"

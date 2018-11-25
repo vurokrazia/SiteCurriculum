@@ -2,7 +2,7 @@
   .card
     .card-body
       %h1
-        = @curriculum.experience
+        = @curriculum.title
       %p
         = @curriculum.description_experience.html_safe
       %p
@@ -15,7 +15,7 @@
         = @curriculum.finish_date
       %p
         %b Tipo de experiencia:
-        = @curriculum.type_experience
+        = @curriculum.experience.title
       %p
         %b correo:
         = @curriculum.user.email

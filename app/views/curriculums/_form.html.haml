@@ -15,7 +15,7 @@
         .form-group.row
           = f.label :experience,class:"col-sm-3 col-form-label"
           .col-sm-9
-            = f.text_field :experience,class:"form-control"
+            = f.text_field :title,class:"form-control"
         .form-group.row
           = f.label :description_experience,class:"col-sm-3 col-form-label"
           .col-sm-9
@@ -38,8 +38,8 @@
           .col-sm-9
             = f.number_field :position,class:"form-control",min:0
         .form-group.row
-          = f.label :type_exp,class:"col-sm-3 col-form-label"
+          = f.label :Experience,class:"col-sm-3 col-form-label"
           .col-sm-9
-            = select("curriculum","type_exp",[["Experiencia de trabajo","0"],["Experiencia de proyecto","1"]],{include_blank: false,:prompt => "Selecciona"},{class:"form-control"})
+            = f.select :experience_id, options_for_select(Experience.all.map{|e| [e.title, e.id]}), {}, {class: "form-control "} 
         .actions
           = f.submit 'Save' 

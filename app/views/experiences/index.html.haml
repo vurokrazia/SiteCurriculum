@@ -1,0 +1,26 @@
+.col-12
+  .card 
+    .card-body
+      %h1.card-title Listing experiences
+      .table-responsive
+        %table.table.table-hover.table-striped
+          %thead
+            %tr
+              %th Title
+              %th User
+              %th
+              %th
+              %th
+
+          %tbody
+            - @experiences.each do |experience|
+              %tr
+                %td= experience.title
+                %td= experience.user.email
+                %td= link_to 'Show', experience,class:"btn btn-primary"
+                %td= link_to 'Edit', edit_experience_path(experience),class:"btn btn-secondary"
+                %td= link_to 'Destroy', experience, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger"
+
+        %br
+
+        = link_to 'New Experience', new_experience_path,class:"btn btn-info"

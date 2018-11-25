@@ -27,6 +27,9 @@
               .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
                 = link_to 'Curriculum', curriculums_path,class:"dropdown-item"
                 = link_to 'Agregar trabajo', new_curriculum_path,class:"dropdown-item"
+                = link_to 'Experiences', experiences_path,class:"dropdown-item"
+                = link_to 'Skills', skills_path,class:"dropdown-item"
+                = link_to 'Tools', tools_path,class:"dropdown-item"
         - else
           %li.nav-item
             = link_to new_user_session_path, class:"nav-link" do
